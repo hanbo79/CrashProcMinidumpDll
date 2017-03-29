@@ -22,4 +22,7 @@ CrashProcDLL_API void installCrashProcCtrl(int prama = 0) ;
  */
 CrashProcDLL_API void setErrorReportCenter(const char centerip[16],const unsigned short centerPort);
 
+
+//启动辅助进程主区当前进程的dump
+CrashProcDLL_API void startCrashProc(int prama = 0) ;
 #endif

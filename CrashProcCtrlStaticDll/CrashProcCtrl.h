@@ -46,6 +46,10 @@ public:
 	//bool generateZipPackage(std::string zipName,EXCEPTION_POINTERS *pExPtr=NULL);
 	bool generateDumpFile(std::string dumpName, EXCEPTION_POINTERS* pExPtr = NULL);
 
+    void savePid(EXCEPTION_POINTERS* pExPtr);
+    int readPid(DWORD &pid);
+    void saveDmpByCreshProcessId(int pid,int prama);
+    static void startCrashProc(int prama);
 public:
     /*
 	 *	»ñµÃZIPÃû×Ö

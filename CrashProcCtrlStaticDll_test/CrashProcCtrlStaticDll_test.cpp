@@ -56,13 +56,28 @@ void funpur()
         //myDerived.function();
     }
 }
+
+DWORD  __stdcall LPTHREAD_START_ROUTINE_cb( 
+    LPVOID lpThreadParameter)
+{
+    int *alloc_test = NULL;
+    while(true)
+    {
+        //printf("\nnew");
+        alloc_test = new int[10240];
+    }
+
+}
+
 int _tmain(int argc, _TCHAR* argv[])
 {    
-
     installCrashProcCtrl(1);   //注册导出
     SetErrorMode(SEM_FAILCRITICALERRORS | SEM_NOGPFAULTERRORBOX);  //防止windows弹出崩溃界面
     //_set_abort_behavior(0,_WRITE_ABORT_MSG); 
     //_set_abort_behavior(0, _WRITE_ABORT_MSG | _CALL_REPORTFAULT);
+
+    CreateThread(NULL,0,LPTHREAD_START_ROUTINE_cb,NULL,0,NULL);
+
 
    // funpur();
 
@@ -86,14 +101,21 @@ int _tmain(int argc, _TCHAR* argv[])
 
    //free((void*)12);
    //fun(0,1);
-    int xa = 0;
-    int x = 3/xa;
+   // int xa = 0;
+   // int x = 3/xa;
 
    // printf("%d",x);
-    int y = 4+x;
+   // int y = 4+x;
     //printf("%d",y);
 
-   getchar();
+    
+   // printf("hell");
+   // getchar();
+
+   
+    printf("hello \n");
+    getchar();
+
 	return 0;
 }
 

@@ -16,7 +16,7 @@ namespace Log
     void writeError2(char *msg, ...)
     {
         if(NULL == g_log_logfile)
-        {
+        { 
             return ;
         }
         va_list arg_ptr;
