@@ -454,12 +454,11 @@ void CCrashProcCtrl::savePid(EXCEPTION_POINTERS* pExPtr)
      tempStr = cmd;
      tempStr += "\\savedmpinfo.txt";
 
-
     HANDLE hFile = CreateFile(tempStr.c_str(),
         GENERIC_WRITE,//对文件的操作
         0, // 共享的方式 0 不能共享
         NULL,// 安全属性 用缺省的
-        CREATE_NEW|CREATE_ALWAYS, //创建一个新的文件
+        CREATE_ALWAYS, //创建一个新的文件
         FILE_ATTRIBUTE_NORMAL, // 文件属性
         NULL); // 模板文件的句柄
     //写入数据
@@ -508,8 +507,7 @@ void CCrashProcCtrl::savePid(EXCEPTION_POINTERS* pExPtr)
     if(bbret != 0)
     {
         Log::writeError2("创建保存dmp进程成功,等待");
-        //WaitForSingleObject(pi.hProcess, INFINITE);
-        getchar();
+        WaitForSingleObject(pi.hProcess, INFINITE);
         Log::writeError2("创建保存dmp进程成功,结束");
 
         ::CloseHandle(pi.hThread);
